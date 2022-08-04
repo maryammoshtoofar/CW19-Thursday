@@ -19,11 +19,15 @@ const TodoProvider = ({ children }) => {
     }));
   };
 
-
-
+  const deleteTodo = (id) => {
+    setState((prev) => ({
+      ...prev,
+      todos: prev.todos.filter((todo) => todo.id !== id),
+    }));
+  };
 
   return (
-    <TodoContext.Provider value={{ ...state, addTodo }}>
+    <TodoContext.Provider value={{ ...state, addTodo, deleteTodo }}>
       {children}
     </TodoContext.Provider>
   );
