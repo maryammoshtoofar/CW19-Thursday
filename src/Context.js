@@ -1,13 +1,16 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 
 const TodoContext = createContext();
 
 const TodoProvider = ({ children }) => {
+  const initialState = JSON.parse(localStorage.getItem("todos")) || [];
   const [state, setState] = useState({
-    todos: [],
-    // todo: { id: "", task: "" },
+    todos: initialState,
   });
 
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(state.todos));
+  }, [state.todos]);
 
   const addTodo = (newTodo) => {
     setState((prev) => ({
@@ -16,7 +19,9 @@ const TodoProvider = ({ children }) => {
     }));
   };
 
-  //   const clearInput = () => {};
+
+
+
   return (
     <TodoContext.Provider value={{ ...state, addTodo }}>
       {children}

@@ -5,6 +5,11 @@ import { useState } from "react";
 const TodosForm = () => {
   const [todoInput, setTodoInput] = useState("");
 
+  const clearInput = (e) => {
+    e.preventDefault();
+    setTodoInput("");
+  };
+
   const { addTodo } = useTodos();
   const createTodo = (e) => {
     console.log("e");
@@ -12,6 +17,7 @@ const TodosForm = () => {
     const uniqueId = uuidv4();
     const newTodo = { id: uniqueId, task: todoInput };
     addTodo(newTodo);
+    setTodoInput("");
   };
   return (
     <form>
@@ -23,7 +29,7 @@ const TodosForm = () => {
       />
       <div>
         <button onClick={createTodo}>Add Task</button>
-        <button>Clear</button>
+        <button onClick={clearInput}>Clear </button>
       </div>
     </form>
   );
