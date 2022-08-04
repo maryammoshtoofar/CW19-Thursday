@@ -3,15 +3,16 @@ import { FaTrashAlt } from "react-icons/fa";
 import { useTodos } from "../../Context";
 
 const Todo = ({ todo }) => {
-  const { deleteTodo } = useTodos();
+  const { deleteTodo, findItem } = useTodos();
   return (
     <div>
       <p>{todo.task}</p>
       <button onClick={() => deleteTodo(todo.id)}>
         <FaTrashAlt />
       </button>
-
-      <FiEdit2 />
+      <button onClick={() => findItem(todo.id)}>
+        <FiEdit2 />
+      </button>
     </div>
   );
 };

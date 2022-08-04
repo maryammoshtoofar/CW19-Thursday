@@ -3,7 +3,6 @@ import { useTodos } from "../../Context";
 
 const TodosList = () => {
   const { todos } = useTodos();
-  console.log(todos);
   return (
     <div>
       {todos.map((todo) => (
