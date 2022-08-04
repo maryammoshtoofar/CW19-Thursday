@@ -1,10 +1,9 @@
 import { FiEdit2 } from "react-icons/fi";
 import { FaTrashAlt } from "react-icons/fa";
-
-const Todo = () => {
+const Todo = ({ todo }) => {
   return (
     <div>
-      <p>Watch TV</p>
+      <p>{todo.task}</p>
       <FaTrashAlt />
       <FiEdit2 />
     </div>
